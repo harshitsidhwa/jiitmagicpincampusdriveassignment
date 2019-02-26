@@ -1,7 +1,7 @@
 function validatePassword() {
     var hasError = false;
     var patt1 = new RegExp("^(?=.{6,})");
-    var patt2 = new RegExp("^(?=.{6,12})");
+    var patt2 = new RegExp("^(?=.{,12})$");
     var patt3 = new RegExp("^(?=.*[a-z])");
     var patt4 = new RegExp("^(?=.*[A-Z])");
     var patt5 = new RegExp("^(?=.*[0-9])");
@@ -20,7 +20,7 @@ function validatePassword() {
         if(!patt1.test(pswd)){
             console.log(pswd + " Case 1");
             errorTxt += "Password must be at least 6 characters long."
-        } else if (!patt2.test(pswd)){
+        } else if (pswd.length > 12){
             console.log(pswd + " Case 2");
             errorTxt += "Password must be at max 12 characters long."
         } else if(!patt3.test(pswd)){
@@ -32,12 +32,12 @@ function validatePassword() {
         } else if(!patt5.test(pswd)){
             console.log(pswd + " Case 5");
             errorTxt += "Password must contain at least one letter from 0-9";
-        } else if(!patt6.test(pswd)) {
-            console.log(pswd + " Case 6");
-            errorTxt += "Password must contain at least one letter from *$_#=@";
         } else if(patt7.test(pswd)) {
             console.log(pswd + " Case 7");
             errorTxt += "Password cannot contain %!)(.";
+        } else if(!patt6.test(pswd)) {
+            console.log(pswd + " Case 6");
+            errorTxt += "Password must contain at least one letter from *$_#=@";
         } else {
             console.log(pswd + " Case 8");
             errorTxt += "Success";
